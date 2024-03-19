@@ -55,10 +55,12 @@ public class DialogueManager : MonoBehaviour
         //Continuar la historia al hacer click mientras las opciones no están en pantalla
         if (Input.GetMouseButtonDown(0) && !choices[0].activeInHierarchy)
         {
-            if (storyHasStarted)
+            //Si se bugea descomento esto
+
+            //if (storyHasStarted)
                 ContinueStory();
-            else
-                storyHasStarted = true;
+            //else
+            //    storyHasStarted = true;
         }
     }
 
@@ -84,6 +86,7 @@ public class DialogueManager : MonoBehaviour
 
     private void ContinueStory()
     {
+        Debug.Log("Entre");
         if (currentStory.canContinue)
         {
             dialogueText.text = currentStory.Continue();
