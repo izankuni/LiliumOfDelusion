@@ -9,6 +9,7 @@ public class SwipeController : MonoBehaviour
     Vector3 targetPos;
     [SerializeField] Vector3 pageStep;
     [SerializeField] RectTransform levelPagesRect;
+    [SerializeField] GameObject cardMenu;
 
     [SerializeField] float tweenTime;
     [SerializeField] LeanTweenType tweenType;
@@ -37,6 +38,11 @@ public class SwipeController : MonoBehaviour
             targetPos -= pageStep;
             MovePage();
         }
+    }
+
+    public void Exit()
+    {
+        cardMenu.SetActive(false);
     }
 
     void MovePage()
