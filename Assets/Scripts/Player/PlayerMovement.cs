@@ -5,22 +5,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
-    public Vector3 target;
-
-    void Start()
-    {
-        target = transform.position;
-    }
+    private float horizontal;
+    [SerializeField] private Rigidbody2D rb;
 
     void Update()
     {
-        //Movimiento al hacer click
-        if (Input.GetMouseButton(0))
-        {
-            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            target.z = transform.position.z;
-        }
+        horizontal = Input.GetAxisRaw("Horizontal");
+    }
 
-        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 }

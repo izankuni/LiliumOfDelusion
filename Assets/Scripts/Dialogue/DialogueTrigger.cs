@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    [Header("Info")]
-    [SerializeField] private GameObject info;
+    [Header("Highlight")]
+    [SerializeField] private GameObject highlight;
 
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
@@ -15,27 +15,22 @@ public class DialogueTrigger : MonoBehaviour
     private void Awake()
     {
         playerInRange = false;
-        info.SetActive(false);
+        highlight.SetActive(false);
     }
 
     private void Update()
     {
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
-            info.SetActive(true);
-            if (Input.GetMouseButtonDown(0))
+            highlight.SetActive(true);
+            if (Input.GetKeyDown("space"))
             {
-                Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero);
-                if (hit.collider != null && hit.collider.gameObject.name == "Info")
-                {
-                    EnterDialogue();
-                }
+                EnterDialogue();
             }
         }
         else
         {
-            info.SetActive(false);
+            highlight.SetActive(false);
         }
     }
 
