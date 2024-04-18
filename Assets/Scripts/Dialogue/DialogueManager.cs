@@ -18,10 +18,13 @@ public class DialogueManager : MonoBehaviour
     public bool dialogueIsPlaying { get; set; }
     private TextMeshProUGUI[] choicesText;
     public bool storyHasStarted; //Variable provisional antes de crear efectos para el dialogo
+    private Coroutine displayLineCoroutine;
+    private float typingSpeed;
 
     private void Awake()
     {
         instance = this;
+        typingSpeed = 0.02f;
     }
 
     public static DialogueManager GetInstance()
@@ -55,7 +58,7 @@ public class DialogueManager : MonoBehaviour
         //Continuar la historia al hacer click mientras las opciones no están en pantalla
         if (Input.GetMouseButtonDown(0) && !choices[0].activeInHierarchy)
         {
-            //Si se bugea descomento esto
+
 
             //if (storyHasStarted)
                 ContinueStory();
@@ -70,7 +73,7 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
-        Time.timeScale = 0; //Pausa el juego
+        //Time.timeScale = 0; //Pausa el juego
 
         ContinueStory();
     }
@@ -81,15 +84,19 @@ public class DialogueManager : MonoBehaviour
         storyHasStarted = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
-        Time.timeScale = 1; //Quita la pausa del juego
+        //Time.timeScale = 1; //Quita la pausa del juego
     }
 
     private void ContinueStory()
     {
-        Debug.Log("Entre");
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            if (displayLineCoroutine != null)
+            {
+                StopCoroutine(displayLineCoroutine);
+            }
+            displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
+            //dialogueText.text = currentStory.Continue();
             DisplayChoices();
         }
         else
@@ -128,5 +135,23 @@ public class DialogueManager : MonoBehaviour
         //Al elegir una opción el dialogo continua 
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
+    }
+
+    private IEnumerator DisplayLine(string line)
+    {
+        dialogueText.text = "";
+        //bool willSound = true;
+
+        foreach (char letter in line.ToCharArray())
+        {
+            Debug.Log("Letra: " + letter);
+            //if (willSound)
+            //    //SoundFXManager.instance.PlaySoundFXClip(textSound, transform, 1f);
+            //willSound = !willSound;
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        DisplayChoices();
+
     }
 }

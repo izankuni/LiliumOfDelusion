@@ -23,7 +23,7 @@ public class DialogueTrigger : MonoBehaviour
         if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
             highlight.SetActive(true);
-            if (Input.GetKeyDown("space"))
+            if (Input.GetKeyDown("e"))
             {
                 EnterDialogue();
             }
