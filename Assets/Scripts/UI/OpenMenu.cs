@@ -15,4 +15,9 @@ public class OpenMenu : MonoBehaviour
     {
         menu.SetActive(true);
     }
+
+    public void menuExit()
+    {
+        menu.SetActive(false);
+    }
 }

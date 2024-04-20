@@ -1,1 +1,1 @@
-﻿
+VAR info_dibujoInfantil = false
