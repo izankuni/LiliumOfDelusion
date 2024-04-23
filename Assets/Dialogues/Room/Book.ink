@@ -29,11 +29,14 @@ Al cogerlo, miro la portada; es un libro infantil. "Vaya, mi libro favorito de c
     "No me acuerdo bien, pero seguramente el bueno vencería al malo y todos serían felices y esas cosas."
 
     "Qué más da, ni que fuera una maravilla."
+    
+    Información obtenida: "Dibujo infantil"
     ~info_dibujoInfantil = true
     ->END
 
 +[Bueno, que más da, si te gusta]
     "Sí, supongo. Aunque ya soy demasiado mayor para estas historias."
+    
     ->END
 
 ===a1===
@@ -41,11 +44,16 @@ Al cogerlo, miro la portada; es un libro infantil. "Vaya, mi libro favorito de c
 "Sí, está claro que mis padres me odian. Sabían lo que me emociona abrir regalos. Aun así, me regalaron dinero."
 
 "Supongo que no era suficiente para ellos. Supongo que no me lo merecía. Deberia haberme portado mejor."
-->END
+->a2
 
 +[Oye, no está mal]
 "Sí que está mal, yo queria abrir regalos, quitar el envoltorio y esas cosas y mis padres lo sabian."
 
 "Supongo que no era suficiente para ellos. Supongo que no me lo merecía. Deberia haberme portado mejor."
 
+->a2
+
+===a2===
+Información obtenida: "Regalo de cumpleaños"
+~info_regaloDeCumpleanos = true
 ->END
