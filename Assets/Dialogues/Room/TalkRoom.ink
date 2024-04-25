@@ -17,7 +17,7 @@ INCLUDE ../globals.ink
 
     "Y si preguntas si me gustaba alguien, la respuesta es no. Además, soy una fracasada, todos me odiaban."
     
-    ->END
+    ->b0
 
     +[Nada, sigamos buscando las cartas]
 
@@ -89,4 +89,56 @@ INCLUDE ../globals.ink
 ~ card_value = 1
 
 ->END
+
+===b0===
+{
+    -info_dibujoInfantil == true : +[¿Y esa chica de la que eras tan amiga?]
+        "¿Qué dices? ¿Estás bien de la cabeza? Ella era solamente una amiga, nada más. Simplemente la admiro."
+
+        "Y además, es una chica. Si ella se enterase de que me gusta, estoy segura de que me odiaría aún más."
+
+        "Además, ella seguramente me odia. ¿Qué más da mis sentimientos por ella? Eso no va a cambiar nada."
+        
+        ->b2
+    }
+    
+    +[Bueno, sigamos buscando]
+        "Vale."
+        
+        ->END
+
+-(b2)
++[Entonces sí que te gusta]
+
+    Me doy cuenta de lo que he dicho. "Ahrggg, quería decir, si hipotéticamente me gustara."
+    
+    "..."
+    
+    "No cuela, ¿no? A ver, tampoco sé lo que es el amor en realidad. Es algo raro."
+    
+    ->b3
+
++[No hay nada malo con que te gusten las mujeres]
+
+    "Supongo, pero aún así no quiero que ella sepa que me gusta."
+    
+    Me doy cuenta de lo que acabo de decir. "Mierda, quería decir que, bueno, da igual."
+    
+    ->b3
+    
+===b3===
++[Háblame de cómo te sentías con ella]
+    "Me encantaba estar a su lado, todo era bonito cuando estaba con ella. Los días pasaban enseguida."
+    
+    "Además, era muy guapa. Su sonrisa era preciosa y se preocupaba mucho por mí. Era perfecta."
+    
+    "Aunque ya no está, la verdad es que, aunque me digas que no tiene motivos para odiarme, siento que me odia."
+    
+    "¿Ya eres feliz? ¿Qué pretendes con que te cuente todo esto?"
+    
+    ~ card_obtained = true
+    ~ card_value = 6
+    
+    ->END
+    
 

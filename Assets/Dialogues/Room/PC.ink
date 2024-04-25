@@ -27,7 +27,8 @@ INCLUDE ../globals.ink
     ->END
 
 ===a0===
-+[Podemos intentarlo, usaremos un sistema diferente al de clase]
+{
+    -info_problemasParaEstudiar == true:+[Podemos intentarlo, usaremos un sistema diferente al de clase]
     "Es inútil, si no sirvo, no sirvo. Además, si se usa en clase, debe ser el mejor método."
     
     "..."
@@ -38,11 +39,11 @@ INCLUDE ../globals.ink
     
     "¿Un 5? Ves, no sirvo para esto. Aunque esta vez no me he estresado tanto a la hora de hacer los ejercicios."
     
-    (Tu determinación para adquirir conocimiento te ha brindado la carta de ''"El Hierofante"'')
-    
-    
+    ~ card_obtained = true
+    ~ card_value = 5
 
     ->END
+}
 
 +[Si te gustan entonces se te hará más ameno]
     "No funciona así, ya te he dicho que me estreso mucho al hacer los ejercicios aunque sí, me gustan."
@@ -54,7 +55,8 @@ INCLUDE ../globals.ink
     ->END
 
 ===a1===
-+[¿Quién te hizo daño?]
+{
+    -info_identidadDeLosMonstruos == true:+[¿Quién te hizo daño?]
     "Mucha gente, muchos monstruos. Solía estar en un foro de un videojuego que me gustaba mucho."
     
     "La gente, antes de convertirse en monstruos, era muy amable, pero un día poco a poco se fueron convirtiendo."
@@ -62,6 +64,7 @@ INCLUDE ../globals.ink
     "Me insultaban, se burlaban de mí." Sollozo "Debería haberles hecho caso y suicidarme."
     
     ->b0
+}
 
 +[También veo que tienes muchos juegos instalados]
     "Ah sí, me gustaban mucho los videojuegos. Aunque ya no tengo ganas de jugar."
@@ -71,7 +74,7 @@ INCLUDE ../globals.ink
     "Estoy mucho más cómoda tumbada en mi cama."
     ->b1
     
-===b0===
+-(b0)
 +[No cumplas el deseo de esos imbéciles]
     "Si lo ves así, aún así siento que no tengo motivos para seguir viviendo."
     ->END
@@ -90,9 +93,16 @@ INCLUDE ../globals.ink
     
 ===b1===
 +[¿Y por qué no jugamos a uno ahora?]
+
     "Falta el texto"
+    
+    ~ card_obtained = true
+    ~ card_value = 5
+    
+    
     ->END
 +[No puedes estar todo el día en la cama]
+
     "¿Por qué? Si estoy cansada, ¿qué quieres que haga?"
     ->END
 
