@@ -25,6 +25,7 @@ public class IconCard : MonoBehaviour
         }
         animator = animatorGameObject.GetComponent<Animator>();
         animatorGameObject.SetActive(false);
+        color.a = 1;
     }
 
     // Update is called once per frame
@@ -43,6 +44,7 @@ public class IconCard : MonoBehaviour
 
         if (((Ink.Runtime.BoolValue)DialogueManager.GetInstance().GetVariableState("card_obtained")).value && !DialogueManager.GetInstance().dialogueIsPlaying)
         {
+            imageList[((Ink.Runtime.IntValue)DialogueManager.GetInstance().GetVariableState("card_value")).value].color = color;
             imageCard.sprite = imageList[((Ink.Runtime.IntValue)DialogueManager.GetInstance().GetVariableState("card_value")).value].sprite;
             animatorGameObject.SetActive(true);
             if (Input.GetMouseButtonDown(0))

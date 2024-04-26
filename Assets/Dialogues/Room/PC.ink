@@ -93,13 +93,23 @@ INCLUDE ../globals.ink
     
 ===b1===
 +[¿Y por qué no jugamos a uno ahora?]
+    {
+    -mental_health >= 7:
 
-    "Falta el texto"
+    "Hmmm, bueno vale, total, si es por pasar el tiempo podría intentarlo."
+
+    Enciendo mi juego favorito de cuando era pequeña y paso horas jugándolo recordando viejos tiempos.
+
+    "Ya estoy cansada, parece que he jugado durante un buen rato."
+
+    "Parece que se me sigue dando bien este juego, hacía tanto que no jugaba a algo. No ha estado mal."
     
     ~ card_obtained = true
     ~ card_value = 5
+    ->END
+    }    
     
-    
+    "Te he dicho que no tengo ganas de jugar, ¿no me has escuchado?"
     ->END
 +[No puedes estar todo el día en la cama]
 
