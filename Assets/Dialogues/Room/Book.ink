@@ -40,7 +40,11 @@ Al cogerlo, miro la portada; es un libro infantil. "Vaya, mi libro favorito de c
     ->END
 
 ===a1===
-+[¿Qué cutre, no?] 
++[¿Qué cutre, no?]{
+    -mh0 == false: 
+    ~mental_health +=1
+    ~mh0 = true
+}
 "Sí, está claro que mis padres me odian. Sabían lo que me emociona abrir regalos. Aun así, me regalaron dinero."
 
 "Supongo que no era suficiente para ellos. Supongo que no me lo merecía. Deberia haberme portado mejor."

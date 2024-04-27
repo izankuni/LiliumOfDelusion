@@ -16,7 +16,11 @@ Al mirar detenidamente mi mochila, un escalofrío recorre mi cuerpo. Suspiro "To
     "Se fue del instituto. No me dijo nada, simplemente dejó de ir a clase."
     ->a0
 
-+[Cálmate]
++[Cálmate]{
+    -mh1 == false: 
+    ~mental_health -=2
+    ~mh1 = true
+}
     "Cállate, déjame en paz."
     
     ->END
@@ -77,7 +81,8 @@ Al mirar detenidamente mi mochila, un escalofrío recorre mi cuerpo. Suspiro "To
     -> END
 
 -(a3)
-+[Puede que los monstruos puedan volver a ser humanos]
+{
+-card_2 == false: +[Puede que los monstruos puedan volver a ser humanos]
     "¿Que vuelvan a ser humanos? Imposible, una vez convertidos, es imposible que vuelvan a la normalidad."
     
     "..."
@@ -94,8 +99,11 @@ Al mirar detenidamente mi mochila, un escalofrío recorre mi cuerpo. Suspiro "To
     
     ~ card_obtained = true
     ~ card_value = 2
+    ~ card_2 = true
+    ~ mental_health += 1
 
 ->END
+}
 
 +[Por nada, no te preocupes]
     "Está bien"

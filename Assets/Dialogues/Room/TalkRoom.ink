@@ -1,8 +1,8 @@
 INCLUDE ../globals.ink
 
 "¿Qué pasa?"
-
-+[¿Tenías algún sueño cuando eras niña?]
+{
+    -card_1 == false: +[¿Tenías algún sueño cuando eras niña?]
 
     "¿Un sueño? ¿Qué clase de pregunta es esa?"
 
@@ -11,13 +11,15 @@ INCLUDE ../globals.ink
     "No, no recuerdo nada que me hiciera especial ilusión, la verdad."
     
     ->a0
-
-    +[¿Tuviste algún romance durante la escuela?]
+}
+{
+    -card_6 == false: +[¿Tuviste algún romance durante la escuela?]
         "¿Romance? ¿En serio crees que alguien querría a alguien como yo?"
 
     "Y si preguntas si me gustaba alguien, la respuesta es no. Además, soy una fracasada, todos me odiaban."
     
     ->b0
+}
 
     +[Nada, sigamos buscando las cartas]
 
@@ -25,9 +27,9 @@ INCLUDE ../globals.ink
 
 ->END
 
-===a0===
+-(a0)
 {
-    -info_dibujoInfantil == true :+[¿Y qué hay del héroe de ese libro que dibujabas como tú?]
+    -info_dibujoInfantil == true:+[¿Y qué hay del héroe de ese libro que dibujabas como tú?]
     "¿Te refieres a ese libro? Menuda chorrada. De pequeña me gustaba la historia, nada más."
 
     "..."
@@ -87,12 +89,14 @@ INCLUDE ../globals.ink
 ===magician===
 ~ card_obtained = true
 ~ card_value = 1
+~ card_1 = true
+~ mental_health += 1
 
 ->END
 
 ===b0===
 {
-    -info_dibujoInfantil == true : +[¿Y esa chica de la que eras tan amiga?]
+    -info_amigaDeClase == true : +[¿Y esa chica de la que eras tan amiga?]
         "¿Qué dices? ¿Estás bien de la cabeza? Ella era solamente una amiga, nada más. Simplemente la admiro."
 
         "Y además, es una chica. Si ella se enterase de que me gusta, estoy segura de que me odiaría aún más."
@@ -138,6 +142,8 @@ INCLUDE ../globals.ink
     
     ~ card_obtained = true
     ~ card_value = 6
+    ~ card_6 = true
+    ~ mental_health += 1
     
     ->END
     

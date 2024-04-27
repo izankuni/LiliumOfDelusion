@@ -22,13 +22,17 @@ INCLUDE ../globals.ink
     "Sí que hay ...y muchos ...y pueden hacerme mucho daño, así que mejor no entremos ahí."
     ->a1
     
-    +[Estás paranoica]
+    +[Estás paranoica]{
+    -mh2 == false: 
+    ~mental_health -=2
+    ~mh2 = true
+}
     "¿En serio? Gracias por la información."
     ->END
 
 ===a0===
 {
-    -info_problemasParaEstudiar == true:+[Podemos intentarlo, usaremos un sistema diferente al de clase]
+    -info_problemasParaEstudiar == true && card_5 == false:+[Podemos intentarlo, usaremos un sistema diferente al de clase]
     "Es inútil, si no sirvo, no sirvo. Además, si se usa en clase, debe ser el mejor método."
     
     "..."
@@ -41,6 +45,8 @@ INCLUDE ../globals.ink
     
     ~ card_obtained = true
     ~ card_value = 5
+    ~ card_5 = true
+    ~ mental_health += 1
 
     ->END
 }
@@ -92,6 +98,8 @@ INCLUDE ../globals.ink
     ->END
     
 ===b1===
+{
+-card_7 == false:
 +[¿Y por qué no jugamos a uno ahora?]
     {
     -mental_health >= 7:
@@ -105,12 +113,15 @@ INCLUDE ../globals.ink
     "Parece que se me sigue dando bien este juego, hacía tanto que no jugaba a algo. No ha estado mal."
     
     ~ card_obtained = true
-    ~ card_value = 5
+    ~ card_value = 7
+    ~ card_7 = true
+    ~ mental_health += 1
     ->END
     }    
     
     "Te he dicho que no tengo ganas de jugar, ¿no me has escuchado?"
     ->END
+    }
 +[No puedes estar todo el día en la cama]
 
     "¿Por qué? Si estoy cansada, ¿qué quieres que haga?"

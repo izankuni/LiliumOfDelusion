@@ -31,6 +31,10 @@ public class IconCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            portrait.SetActive(true);
+        }
 
         if (DialogueManager.GetInstance().dialogueIsPlaying && animator.GetBool("Finished"))
         {
