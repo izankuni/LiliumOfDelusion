@@ -2,18 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class IconCard : MonoBehaviour
+public class TarotCardManager : MonoBehaviour
 {
     [SerializeField] private Image[] imageList;
     [SerializeField] private GameObject animatorGameObject;
     [SerializeField] private Image imageCard;
     [SerializeField] private TextAsset inkJSON;
     [SerializeField] private GameObject portrait;
+    [SerializeField] private Animator animatorChangeDay;
+    [SerializeField] private GameObject blackBackground;
     private Image image;
     private Color color;
     private Animator animator;
-    // Start is called before the first frame update
+
+    //Menu
+
+    [SerializeField] private GameObject detailsMenu;
+    [SerializeField] private GameObject detailsMenuImageGameObject;
+    [SerializeField] private GameObject detailsMenuNameGameObject;
+    [SerializeField] private GameObject detailsMenuTextGameObject;
+    [SerializeField] private string[] cardNames;
+    [SerializeField] private string[] cardDescriptions;
+
+    private Image detailsMenuImage;
+    private TextMeshProUGUI detailsMenuName;
+    private TextMeshProUGUI detailsMenuText;
+
+
     void Start()
     {
         for(int i = 0; i < imageList.Length; i++)
@@ -26,6 +43,11 @@ public class IconCard : MonoBehaviour
         animator = animatorGameObject.GetComponent<Animator>();
         animatorGameObject.SetActive(false);
         color.a = 1;
+        blackBackground.SetActive(false);
+        detailsMenu.SetActive(false);
+        detailsMenuImage = detailsMenuImageGameObject.GetComponent<Image>();
+        detailsMenuName = detailsMenuNameGameObject.GetComponent<TextMeshProUGUI>();
+        detailsMenuText = detailsMenuTextGameObject.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -43,6 +65,8 @@ public class IconCard : MonoBehaviour
                 animator.SetBool("Finished", false);
                 animator.gameObject.SetActive(false);
                 ((Ink.Runtime.BoolValue)DialogueManager.GetInstance().GetVariableState("card_obtained")).value = false;
+                blackBackground.SetActive(true);
+                animatorChangeDay.SetBool("ChangeDay", true);
             }
         }
 
@@ -61,5 +85,21 @@ public class IconCard : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void OpenCardMenu(int num)
+    {
+        if(imageList[num].color.a == 1)
+        {
+            detailsMenu.SetActive(true);
+            detailsMenuImage.sprite = imageList[num].sprite;
+            detailsMenuName.text = cardNames[num];
+            detailsMenuText.text = cardDescriptions[num];
+        }
+    }
+
+    public void CloseCardMenu()
+    {
+        detailsMenu.SetActive(false);
     }
 }

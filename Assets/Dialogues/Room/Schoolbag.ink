@@ -64,6 +64,8 @@ Al mirar detenidamente mi mochila, un escalofrío recorre mi cuerpo. Suspiro "To
     
     "Pero ella ya no está, todo fue culpa mía. Si no fuera una inútil asquerosa, ella..."
     
+    Información obtenida: "Amiga de clase"
+    
     ~info_amigaDeClase = true
     ->END
 
