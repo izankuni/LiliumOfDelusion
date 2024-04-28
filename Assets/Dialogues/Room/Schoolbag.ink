@@ -85,7 +85,9 @@ Al mirar detenidamente mi mochila, un escalofrío recorre mi cuerpo. Suspiro "To
 -(a3)
 {
 -card_2 == false: +[Puede que los monstruos puedan volver a ser humanos]
-    "¿Que vuelvan a ser humanos? Imposible, una vez convertidos, es imposible que vuelvan a la normalidad."
+    "¿Que vuelvan a ser humanos? 
+    
+    Imposible, una vez convertidos, es imposible que vuelvan a la normalidad."
     
     "..."
     

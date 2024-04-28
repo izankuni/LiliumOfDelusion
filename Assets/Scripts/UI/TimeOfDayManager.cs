@@ -26,14 +26,16 @@ public class TimeOfDayManager : MonoBehaviour
 
     public void ChangeDay()
     {
-        animator.SetBool("ChangeDay", false);
-        i = (i + 1) % spriteList.Length;
+        cielo.sprite = skySpriteList[(i + 1) % spriteList.Length];
+    }
 
+    public void ChangeDay2()
+    {
+        i = (i + 1) % spriteList.Length;
+        animator.SetBool("ChangeDay", false);
         imageList[0].sprite = spriteList[i];
         imageList[1].sprite = spriteList[(i + 1) % spriteList.Length];
-        cielo.sprite = skySpriteList[i];
         blackBackground.SetActive(false);
-        Time.timeScale = 1;
     }
 
     public static TimeOfDayManager GetInstance()

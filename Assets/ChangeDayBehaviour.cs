@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChangeDayBehaviour : StateMachineBehaviour
 {
+    public bool isFirst;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
@@ -18,7 +19,10 @@ public class ChangeDayBehaviour : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        TimeOfDayManager.GetInstance().ChangeDay();
+        if (isFirst)
+            TimeOfDayManager.GetInstance().ChangeDay();
+        else
+            TimeOfDayManager.GetInstance().ChangeDay2();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
