@@ -11,6 +11,7 @@ public class TimeOfDayManager : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject blackBackground;
     [SerializeField] private SpriteRenderer cielo;
+    [SerializeField] GameObject imageNightmare;
     private int i;
     private static TimeOfDayManager instance;
 
@@ -24,9 +25,25 @@ public class TimeOfDayManager : MonoBehaviour
         imageList[1].sprite = spriteList[1];
     }
 
+    private void Update()
+    {
+        if (i == 3)
+        {
+            NightmareManager.GetInstance().DeleteUI();
+        }
+    }
+
     public void ChangeDay()
     {
         cielo.sprite = skySpriteList[(i + 1) % spriteList.Length];
+        if (i == 2)
+        {
+            imageNightmare.SetActive(true);
+        }
+        else
+        {
+            imageNightmare.SetActive(false);
+        }
     }
 
     public void ChangeDay2()
@@ -36,6 +53,14 @@ public class TimeOfDayManager : MonoBehaviour
         imageList[0].sprite = spriteList[i];
         imageList[1].sprite = spriteList[(i + 1) % spriteList.Length];
         blackBackground.SetActive(false);
+        if (i == 3)
+        {
+            NightmareManager.GetInstance().StartNightmare();
+        }
+        else
+        {
+            NightmareManager.GetInstance().StopNightmare();
+        }
     }
 
     public static TimeOfDayManager GetInstance()

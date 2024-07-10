@@ -66,7 +66,8 @@ public class TarotCardManager : MonoBehaviour
                 animator.gameObject.SetActive(false);
                 ((Ink.Runtime.BoolValue)DialogueManager.GetInstance().GetVariableState("card_obtained")).value = false;
                 blackBackground.SetActive(true);
-                animatorChangeDay.SetBool("ChangeDay", true);
+                if (((Ink.Runtime.IntValue)DialogueManager.GetInstance().GetVariableState("card_value")).value != 0)
+                    animatorChangeDay.SetBool("ChangeDay", true);
             }
         }
 

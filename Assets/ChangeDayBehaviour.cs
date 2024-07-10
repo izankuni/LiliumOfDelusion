@@ -19,10 +19,15 @@ public class ChangeDayBehaviour : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (isFirst)
-            TimeOfDayManager.GetInstance().ChangeDay();
-        else
-            TimeOfDayManager.GetInstance().ChangeDay2();
+        if(((Ink.Runtime.IntValue)DialogueManager.GetInstance().GetVariableState("card_value")).value != 0)
+        {
+            if (isFirst)
+                TimeOfDayManager.GetInstance().ChangeDay();
+            else
+                TimeOfDayManager.GetInstance().ChangeDay2();
+
+            PlayerMovement.GetInstance().MovementManager(false);
+        }
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

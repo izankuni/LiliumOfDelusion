@@ -3,23 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Ink.Runtime;
-using Ink.UnityIntegration;
 using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
 {
-    /*El sistema de diálogos utiliza el paquete gratuito de INK para hacer los dialogos y las elecciones,
-    de esta forma todos los dialogos se guardan en un archivo JSON*/
+    /*El sistema de diálogos utiliza el paquete gratuito de INK para hacer los dialogos y 
+    las elecciones, de esta forma todos los dialogos se guardan en un archivo JSON*/
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private GameObject[] choices;
-    [SerializeField] private InkFile globalsInkFile;
+    [SerializeField] private TextAsset loadGlobalsJSON;
     private static DialogueManager instance;
     private Story currentStory;
     public bool dialogueIsPlaying { get; set; }
     private TextMeshProUGUI[] choicesText;
-    public bool storyHasStarted; //Variable provisional antes de crear efectos para el dialogo
+    public bool storyHasStarted; 
     private Coroutine displayLineCoroutine;
     private float typingSpeed;
     private DialogueVariables dialogueVariables;
@@ -28,7 +27,7 @@ public class DialogueManager : MonoBehaviour
     {
         instance = this;
         typingSpeed = 0.02f;
-        dialogueVariables = new DialogueVariables(globalsInkFile.filePath);
+        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
 
     public static DialogueManager GetInstance()
@@ -78,7 +77,6 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
         dialogueVariables.StartListening(currentStory);
-        //Time.timeScale = 0; //Pausa el juego
 
         ContinueStory();
     }
@@ -90,7 +88,6 @@ public class DialogueManager : MonoBehaviour
         storyHasStarted = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
-        //Time.timeScale = 1; //Quita la pausa del juego
     }
 
     private void ContinueStory()
@@ -102,7 +99,6 @@ public class DialogueManager : MonoBehaviour
                 StopCoroutine(displayLineCoroutine);
             }
             displayLineCoroutine = StartCoroutine(DisplayLine(currentStory.Continue()));
-            //dialogueText.text = currentStory.Continue();
             DisplayChoices();
         }
         else

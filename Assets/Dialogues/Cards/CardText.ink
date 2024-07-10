@@ -38,13 +38,13 @@ INCLUDE ../globals.ink
     Tu coraje para abrir la puerta te ha brindado la carta de Fuerza.
 }
 {card_value == 12:
-    This is written if yourVariable is true.
+    La aceptación de tu culpa te ha brindado la carta de El Colgado.
 }
 {card_value == 13:
     This is written if yourVariable is true.
 }
 {card_value == 14:
-    This is written if yourVariable is true.
+    Tu equilibrio entre la desidia y la dedicación te ha brindado la carta de La Templanza.
 }
 {card_value == 15:
     This is written if yourVariable is true.

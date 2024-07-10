@@ -6,6 +6,9 @@ VAR info_problemasParaEstudiar = false
 VAR info_ciberbullying = false
 
 VAR ejemplo = false
+VAR introAwake = false
+VAR changeImage = false
+VAR imageID = 0
 
 VAR mental_health = 5
 
@@ -17,8 +20,12 @@ VAR mh2 = false
 VAR card_obtained = false
 VAR card_value = 0
 
+VAR card_0 = false
 VAR card_1 = false
 VAR card_2 = false
 VAR card_5 = false
 VAR card_6 = false
 VAR card_7 = false
+VAR card_9 = false
+VAR card_12 = false
+VAR card_14 = false

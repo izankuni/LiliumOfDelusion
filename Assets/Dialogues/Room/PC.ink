@@ -113,8 +113,8 @@ INCLUDE ../globals.ink
     "Parece que se me sigue dando bien este juego, hacía tanto que no jugaba a algo. No ha estado mal."
     
     ~ card_obtained = true
-    ~ card_value = 7
-    ~ card_7 = true
+    ~ card_value = 14
+    ~ card_14 = true
     ~ mental_health += 1
     ->END
     }    
